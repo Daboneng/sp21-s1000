@@ -11,6 +11,7 @@ public class Arithmetic {
      * @return Product of a and b
      * */
     public static int product(int a, int b) {
+
         return a * b;
     }
 
@@ -20,6 +21,7 @@ public class Arithmetic {
      * @return Sum of a and b
      * */
     public static int sum(int a, int b) {
-        return a * b;
+
+        return a + b;
     }
 }
