@@ -138,6 +138,13 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size(); i ++) {
+            for (int j = 0; j < b.size(); j ++) {
+                if (b.tile(i, j) == null) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -148,6 +155,13 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size(); i ++) {
+            for (int j = 0; j < b.size(); j ++) {
+                if (b.tile(i, j) != null && b.tile(i, j).value() == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -159,8 +173,36 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        if (emptySpaceExists(b)){
+            return true;
+        }
+        else if (twoAdjacentTilesEqual(b)) {
+            return true;
+        }
+        else {
+        return false;
+        }
+    }
+
+
+    /** Returns True if:
+     * There are two adjacent tiles with the same value.
+     */
+
+    public static boolean twoAdjacentTilesEqual(Board b) {
+        for (int i = 0; i < b.size(); i++) {
+            for (int j = 0; j < b.size(); j++) {
+                boolean Horizon = j + 1 < b.size() && b.tile(i, j).value() == b.tile(i, j + 1).value();
+                boolean Vertical = i + 1 < b.size() && b.tile(i, j).value() == b.tile(i + 1, j).value();
+                if (Horizon || Vertical) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
+
+
 
 
     @Override
