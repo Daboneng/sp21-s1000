@@ -113,13 +113,58 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        board.setViewingPerspective(side);
+        int size = board.size();
+        for (int col = 0; col < size; col +=1) {
+            for (int row = size -1; row >= 0; row -=1){
+                Tile t1 = board.tile(col, row);
+                if (t1 == null) {
+                    Tile t1Lower = FindTile(col, row - 1, board);
+                    if (t1Lower != null){
+                        board.move(col, row, t1Lower);
+                        row += 1;
+                        changed = true;
+                    }
+                }
+                else if (t1 != null) {
+                    Tile t1Lower = FindTile(col, row - 1, board);
+                    if (t1Lower != null){
+                        if (t1Lower.value() == t1.value()) {
+                            board.move(col, row, t1Lower);
+                            score += board.tile(col, row).value();
+                        }
+                        else {
+                            board.move(col, row - 1, t1Lower);
+                        }
+                        changed = true;
+                    }
+                }
+            }
+        }
 
+
+
+        board.setViewingPerspective(Side.NORTH);
         checkGameOver();
         if (changed) {
             setChanged();
         }
         return changed;
     }
+
+    /** From top to down, find the first non-null tile
+     */
+    public static Tile FindTile(int c, int r, Board board){
+        for(int row = r ; row >= 0 ; row -= 1){
+            Tile tile = board.tile(c, row);
+            if (tile != null) {
+                return tile;
+            }
+        }
+        return null;
+    }
+
+
 
     /** Checks if the game is over and sets the gameOver variable
      *  appropriately.
