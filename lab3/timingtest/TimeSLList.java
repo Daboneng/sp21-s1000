@@ -25,7 +25,7 @@ public class TimeSLList {
         // TODO: YOUR CODE HERE
         int n = 1000;
         int m = 10000;
-        double limit = Math.pow(2,7)*1000;
+        int limit = 128000;
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
