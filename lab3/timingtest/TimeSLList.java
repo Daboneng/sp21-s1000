@@ -25,7 +25,7 @@ public class TimeSLList {
         // TODO: YOUR CODE HERE
         int n = 1000;
         int m = 10000;
-        double limit = Math.pow(2,8)*1000;
+        double limit = Math.pow(2,7)*1000;
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
@@ -36,7 +36,9 @@ public class TimeSLList {
                 Curr.addLast(i);
             }
             Stopwatch sw = new Stopwatch();
-            Curr.getLast();
+            for (int j = 1; j < m; j ++){
+                Curr.getLast();
+            }
             double TimeinSeconds = sw.elapsedTime();
             Ns.addLast(n);
             times.addLast(TimeinSeconds);
