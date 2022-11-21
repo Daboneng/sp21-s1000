@@ -25,22 +25,22 @@ public class TimeSLList {
         // TODO: YOUR CODE HERE
         int n = 1000;
         int m = 10000;
-        double limit = Math.pow(2,7)*1000;
+        double limit = Math.pow(2,8)*1000;
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
-        SLList<Integer> Curr = new SLList<>();
-        Stopwatch sw = new Stopwatch();
 
         while (n <= limit) {
+            SLList<Integer> Curr = new SLList<>();
             for(int i = 1; i < n; i ++) {
                 Curr.addLast(i);
             }
+            Stopwatch sw = new Stopwatch();
             Curr.getLast();
             double TimeinSeconds = sw.elapsedTime();
             Ns.addLast(n);
-            opCounts.addLast(m);
             times.addLast(TimeinSeconds);
+            opCounts.addLast(m);
             n *=2;
         }
         printTimingTable(Ns, times, opCounts);
