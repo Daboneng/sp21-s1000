@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 
 public class TestBuggyAList {
   // YOUR TESTS HERE
-    @Test
-    public void testThreeAddThreeRemove() {
+
+    public static void testThreeAddThreeRemove() {
         AListNoResizing<Integer> correct = new AListNoResizing<>();
         BuggyAList<Integer> broken = new BuggyAList<>();
 
@@ -31,8 +31,7 @@ public class TestBuggyAList {
         assertEquals(correct.removeLast(), broken.removeLast());
     }
 
-    @Test
-    public void randomizedTest(){
+    public static void randomizedTest(){
         AListNoResizing<Integer> L = new AListNoResizing<>();
         BuggyAList<Integer> B = new BuggyAList<>();
         int N = 5000;
@@ -69,5 +68,9 @@ public class TestBuggyAList {
             }
 
         }
+    }
+    public static void main(String[] args){
+        testThreeAddThreeRemove();
+        randomizedTest();
     }
 }
