@@ -9,10 +9,10 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         comparator = c;
     }
 
-    public MaxArrayDeque(Comparator<T> c, T item) {
-        this(c);
-        this.addFirst(item);
-    }
+//    public MaxArrayDeque(Comparator<T> c, T item) {
+//        this(c);
+//        this.addFirst(item);
+//    }
 
     public T max(Comparator<T> c) {
         if (isEmpty()) {

@@ -14,10 +14,10 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         nextFirst = 1;
         nextLast = 2;
     }
-    public ArrayDeque(T item) {
-        this();
-        this.addFirst(item);
-    }
+//    public ArrayDeque(T item) {
+//        this();
+//        this.addFirst(item);
+//    }
 
     public int size() {
         return size;
@@ -80,10 +80,10 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         size++;
     }
 
-    private T remove(int Index) {
-        T remove = items[Index];
+    private T remove(int index) {
+        T remove = items[index];
         size--;
-        items[Index] = null;
+        items[index] = null;
         return remove;
     }
 
