@@ -23,12 +23,12 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return size;
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         return size == items.length;
     }
 
-    public float useRatio() {
-        return (float) size/items.length;
+    private float useRatio() {
+        return (float) size / items.length;
     }
 
     private int getFirstIndex() {
@@ -47,7 +47,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
-    private void resizeHelper (int capacity) {
+    private void resizeHelper(int capacity) {
         T[] a = (T[]) new Object[capacity];
         if (getFirstIndex() < getLastIndex()) {
             System.arraycopy(items, getFirstIndex(), a, 2, size);
@@ -68,7 +68,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
         items[nextFirst] = item;
         nextFirst = Math.floorMod(nextFirst - 1, items.length);
-        size ++;
+        size++;
     }
 
     public void addLast(T item) {
@@ -77,18 +77,18 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
         items[nextLast] = item;
         nextLast = Math.floorMod(nextLast + 1, items.length);
-        size ++;
+        size++;
     }
 
-    public T remove(int Index) {
+    private T remove(int Index) {
         T remove = items[Index];
-        size --;
+        size--;
         items[Index] = null;
         return remove;
     }
 
     public T removeFirst() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         T remove = remove(getFirstIndex());
@@ -97,8 +97,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return remove;
     }
 
-    public T removeLast(){
-        if (isEmpty()){
+    public T removeLast() {
+        if (isEmpty()) {
             return null;
         }
         T remove = remove(getLastIndex());
@@ -109,20 +109,20 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
 
 
-    public T get(int Index) {
-        int circularIndex = Math.floorMod(getFirstIndex() + Index, items.length);
+    public T get(int index) {
+        int circularIndex = Math.floorMod(getFirstIndex() + index, items.length);
         return items[circularIndex];
     }
 
-    public T getFirst() {
-        int circularIndex = Math.floorMod(getFirstIndex(), items.length);
-        return items[circularIndex];
-    }
-
-    public T getLast() {
-        int circularIndex = Math.floorMod(getLastIndex(), items.length);
-        return items[circularIndex];
-    }
+//    public T getFirst() {
+//        int circularIndex = Math.floorMod(getFirstIndex(), items.length);
+//        return items[circularIndex];
+//    }
+//
+//    public T getLast() {
+//        int circularIndex = Math.floorMod(getLastIndex(), items.length);
+//        return items[circularIndex];
+//    }
 
 
 
@@ -144,14 +144,14 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 return null;
             } else {
                 T item = get(currIndex);
-                currIndex ++;
+                currIndex++;
                 return item;
             }
 
         }
     }
     public void printDeque() {
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             if (i == size - 1) {
                 System.out.println(get(i));
                 break;
@@ -174,7 +174,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (this.size() != o1.size()) {
             return false;
         }
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             if (!(this.get(i).equals(o1.get(i)))) {
                 return false;
             }

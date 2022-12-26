@@ -20,7 +20,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         }
         T max = get(0);
         for (T i : this) {
-            if (c.compare(max, i) < 0 ) {
+            if (c.compare(max, i) < 0) {
                 max = i;
             }
         }

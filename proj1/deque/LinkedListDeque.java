@@ -1,14 +1,14 @@
 package deque;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private class Node {
-        public T item;
-        public Node next;
-        public Node prev;
+        private T item;
+        private Node next;
+        private Node prev;
         private Node(T i, Node n, Node p) {
             item = i;
             next = n;
@@ -38,14 +38,14 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     public void addFirst(T x) {
-        size ++;
+        size++;
         Node newNode = new Node(x, sentinel.next, sentinel);
         sentinel.next.prev = newNode;
         sentinel.next = newNode;
     }
 
     public void addLast(T x) {
-        size ++;
+        size++;
         Node newNode = new Node(x, sentinel, sentinel.prev);
         sentinel.prev.next = newNode;
         sentinel.prev = newNode;
@@ -53,7 +53,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
 
     public T removeFirst() {
         if (sentinel.next != sentinel) {
-            size --;
+            size--;
             return removeFirstHelper();
         } else {
             return null;
@@ -69,7 +69,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
 
     public T removeLast() {
         if (sentinel.prev != sentinel) {
-            size --;
+            size--;
             return removeLastHelper();
         } else {
             return null;
@@ -104,9 +104,9 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         } else {
             Node currNode = sentinel;
-            while (index >= 0 ) {
+            while (index >= 0) {
                 currNode = currNode.next;
-                index --;
+                index--;
             }
             return currNode.item;
         }
@@ -169,7 +169,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (this.size() != o1.size()) {
             return false;
         }
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             if (!(this.get(i).equals(o1.get(i)))) {
                 return false;
             }
